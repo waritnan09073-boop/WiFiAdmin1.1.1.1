@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>เข้าสู่ระบบ Wi-Fi</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: Arial, "Noto Sans Thai", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(255, 255, 150, 0.35),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 85% 15%,
+          rgba(180, 240, 255, 0.35),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 15% 80%,
+          rgba(255, 220, 150, 0.30),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 90% 80%,
+          rgba(255, 180, 220, 0.30),
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          #f9f9d9,
+          #e9f8f7,
+          #f9e9f7
+        );
+
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: 75px 30px 50px;
+    }
+
+    /* =========================
+       รูปด้านบน
+    ========================= */
+
+    .logo {
+      width: 350px;
+      height: 350px;
+      max-width: 90vw;
+
+      object-fit: cover;
+
+      display: block;
+
+      margin-bottom: 42px;
+    }
+
+    /* =========================
+       ช่องกรอก
+    ========================= */
+
+    .input-box {
+      width: 100%;
+      height: 128px;
+
+      margin-bottom: 52px;
+      padding: 10px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 190, 220, 0.55),
+          rgba(220, 230, 255, 0.65)
+        );
+
+      border: 2px solid rgba(255,255,255,0.75);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      height: 100%;
+
+      border: none;
+      outline: none;
+
+      background: rgba(245, 250, 235, 0.85);
+
+      text-align: center;
+
+      font-size: 38px;
+
+      color: #111;
+
+      font-family:
+        Arial,
+        "Noto Sans Thai",
+        sans-serif;
+    }
+
+    input::placeholder {
+      color: #111;
+      opacity: 1;
+    }
+
+    input:focus {
+      background: rgba(255,255,255,0.92);
+    }
+
+    /* =========================
+       ปุ่ม Login
+    ========================= */
+
+    .login-button {
+      width: 100%;
+      height: 128px;
+
+      border: 2px solid rgba(255,255,255,0.75);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 190, 220, 0.55),
+          rgba(220, 230, 255, 0.65)
+        );
+
+      padding: 10px;
+
+      cursor: pointer;
+
+      margin-bottom: 25px;
+    }
+
+    .login-button span {
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(245, 250, 235, 0.85);
+
+      font-size: 38px;
+
+      color: #111;
+    }
+
+    .login-button:active {
+      transform: scale(0.98);
+    }
+
+    /* =========================
+       จดจำรหัส
+    ========================= */
+
+    .remember {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 25px;
+
+      font-size: 36px;
+
+      color: #111;
+    }
+
+    .remember input {
+      appearance: none;
+
+      width: 70px;
+      height: 70px;
+
+      flex: 0 0 70px;
+
+      margin: 0;
+
+      background: rgba(255,255,255,0.35);
+
+      border: 3px solid #d9e9ff;
+
+      cursor: pointer;
+    }
+
+    .remember input:checked {
+      background:
+        linear-gradient(
+          135deg,
+          #ffd0e7,
+          #d5f3ff
+        );
+
+      position: relative;
+    }
+
+    .remember input:checked::after {
+      content: "✓";
+
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      font-size: 50px;
+
+      color: #555;
+    }
+
+    /* =========================
+       หน้า Login สำเร็จ
+    ========================= */
+
+    .success {
+      display: none;
+
+      width: 100%;
+
+      text-align: center;
+
+      font-size: 35px;
+
+      background:
+        rgba(255,255,255,0.5);
+
+      padding: 30px;
+
+      border:
+        2px solid rgba(255,255,255,0.8);
+
+      margin-top: 20px;
+    }
+
+    .success small {
+      display: block;
+
+      margin-top: 15px;
+
+      font-size: 22px;
+    }
+
+    /* =========================
+       มือถือ
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      .container {
+        padding: 35px 22px 40px;
+      }
+
+      .logo {
+        width: 280px;
+        height: 280px;
+
+        margin-bottom: 30px;
+      }
+
+      .input-box,
+      .login-button {
+        height: 82px;
+
+        margin-bottom: 28px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      .login-button span {
+        font-size: 25px;
+      }
+
+      .remember {
+        font-size: 24px;
+
+        gap: 15px;
+      }
+
+      .remember input {
+        width: 48px;
+        height: 48px;
+
+        flex-basis: 48px;
+      }
+
+      .remember input:checked::after {
+        font-size: 32px;
+      }
+
+      .success {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <main class="container">
+
+    <!-- =========================
+         รูปด้านบน
+    ========================== -->
+
+    <img
+      src="logo.png"
+      alt="Wi-Fi"
+      class="logo"
+    >
+
+
+    <!-- =========================
+         ชื่อผู้ใช้
+    ========================== -->
+
+    <div class="input-box">
+
+      <input
+        id="username"
+        type="text"
+        placeholder="ชื่อผู้ใช้"
+        autocomplete="username"
+      >
+
+    </div>
+
+
+    <!-- =========================
+         รหัสผ่าน
+    ========================== -->
+
+    <div class="input-box">
+
+      <input
+        id="password"
+        type="password"
+        placeholder="รหัสผ่าน"
+        autocomplete="current-password"
+      >
+
+    </div>
+
+
+    <!-- =========================
+         ปุ่มเข้าใช้งาน
+    ========================== -->
+
+    <button
+      class="login-button"
+      onclick="login()"
+    >
+
+      <span>
+        เข้าใช้งาน
+      </span>
+
+    </button>
+
+
+    <!-- =========================
+         จำรหัส
+    ========================== -->
+
+    <label class="remember">
+
+      <input
+        type="checkbox"
+        id="remember"
+      >
+
+      <span>
+        จดจำรหัส
+      </span>
+
+    </label>
+
+
+    <!-- =========================
+         Login สำเร็จ
+    ========================== -->
+
+    <div
+      class="success"
+      id="success"
+    >
+
+      ✅ เข้าสู่ระบบสำเร็จ
+
+      <small>
+        ยินดีต้อนรับเข้าสู่ Wi-Fi
+      </small>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    /* ==================================
+       Username และ Password
+    ================================== */
+
+    const CORRECT_USERNAME = "Admin";
+
+    const CORRECT_PASSWORD = "23451";
+
+
+    /* ==================================
+       โหลดข้อมูลที่เคยจำไว้
+    ================================== */
+
+    window.addEventListener(
+      "load",
+      () => {
+
+        const savedUser =
+          localStorage.getItem(
+            "wifi_username"
+          );
+
+        const savedPass =
+          localStorage.getItem(
+            "wifi_password"
+          );
+
+
+        if (
+          savedUser &&
+          savedPass
+        ) {
+
+          document.getElementById(
+            "username"
+          ).value = savedUser;
+
+
+          document.getElementById(
+            "password"
+          ).value = savedPass;
+
+
+          document.getElementById(
+            "remember"
+          ).checked = true;
+
+        }
+
+      }
+    );
+
+
+    /* ==================================
+       ระบบ Login
+    ================================== */
+
+    function login() {
+
+      const username =
+        document.getElementById(
+          "username"
+        ).value.trim();
+
+
+      const password =
+        document.getElementById(
+          "password"
+        ).value;
+
+
+      const remember =
+        document.getElementById(
+          "remember"
+        ).checked;
+
+
+      /* ===============================
+         ไม่กรอกชื่อผู้ใช้
+      =============================== */
+
+      if (!username) {
+
+        alert(
+          "กรุณาใส่ชื่อผู้ใช้ในช่องด้วย"
+        );
+
+        document.getElementById(
+          "username"
+        ).focus();
+
+        return;
+      }
+
+
+      /* ===============================
+         ไม่กรอกรหัสผ่าน
+      =============================== */
+
+      if (!password) {
+
+        alert(
+          "กรุณาใส่รหัสผ่านในช่องด้วย"
+        );
+
+        document.getElementById(
+          "password"
+        ).focus();
+
+        return;
+      }
+
+
+      /* ===============================
+         ตรวจสอบ Username + Password
+      =============================== */
+
+      if (
+        username === CORRECT_USERNAME &&
+        password === CORRECT_PASSWORD
+      ) {
+
+
+        /* =============================
+           จดจำรหัส
+        ============================= */
+
+        if (remember) {
+
+          localStorage.setItem(
+            "wifi_username",
+            username
+          );
+
+          localStorage.setItem(
+            "wifi_password",
+            password
+          );
+
+        } else {
+
+          localStorage.removeItem(
+            "wifi_username"
+          );
+
+          localStorage.removeItem(
+            "wifi_password"
+          );
+
+        }
+
+
+        /* =============================
+           ซ่อนช่อง Login
+        ============================= */
+
+        document
+          .querySelectorAll(
+            ".input-box"
+          )
+          .forEach(
+            box => {
+
+              box.style.display =
+                "none";
+
+            }
+          );
+
+
+        document.querySelector(
+          ".login-button"
+        ).style.display =
+          "none";
+
+
+        document.querySelector(
+          ".remember"
+        ).style.display =
+          "none";
+
+
+        /* =============================
+           แสดง Login สำเร็จ
+        ============================= */
+
+        document.getElementById(
+          "success"
+        ).style.display =
+          "block";
+
+
+      } else {
+
+
+        /* =============================
+           ข้อมูลผิด
+        ============================= */
+
+        alert(
+          "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
+        );
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
