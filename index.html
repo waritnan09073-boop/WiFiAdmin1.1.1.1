@@ -1,57 +1,93 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#f9e9f7">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <link rel="manifest" href="./manifest.json">
+  <meta
+    name="theme-color"
+    content="#f9e9f7"
+  >
+
+  <link
+    rel="manifest"
+    href="./manifest.json"
+  >
 
   <title>เข้าสู่ระบบ Wi-Fi</title>
 
+
   <style>
+
+    /* =========================
+       RESET
+    ========================= */
+
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
 
+
     html,
     body {
+
       margin: 0;
       padding: 0;
+
       width: 100%;
       min-height: 100%;
-      font-family: Arial, "Noto Sans Thai", sans-serif;
+
+      font-family:
+        Arial,
+        "Noto Sans Thai",
+        sans-serif;
     }
 
+
+    /* =========================
+       พื้นหลัง
+    ========================= */
+
     body {
+
       min-height: 100vh;
 
       display: flex;
       justify-content: center;
 
       background:
+
         radial-gradient(
           circle at 10% 10%,
-          rgba(255, 255, 150, 0.35),
+          rgba(255,255,150,0.35),
           transparent 30%
         ),
+
         radial-gradient(
           circle at 90% 10%,
-          rgba(180, 240, 255, 0.35),
+          rgba(180,240,255,0.35),
           transparent 30%
         ),
+
         radial-gradient(
           circle at 10% 90%,
-          rgba(255, 220, 150, 0.30),
+          rgba(255,220,150,0.30),
           transparent 32%
         ),
+
         radial-gradient(
           circle at 90% 90%,
-          rgba(255, 180, 220, 0.30),
+          rgba(255,180,220,0.30),
           transparent 32%
         ),
+
         linear-gradient(
           135deg,
           #f9f9d9,
@@ -62,23 +98,38 @@
       overflow-x: hidden;
     }
 
+
+    /* =========================
+       กล่องหลัก
+    ========================= */
+
     .container {
+
       width: 100%;
+
       max-width: 430px;
+
       min-height: 100vh;
 
-      padding: 30px 20px 30px;
+      padding:
+        30px
+        20px
+        30px;
 
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
     }
+
 
     /* =========================
        LOGO
     ========================= */
 
     .logo {
+
       width: 145px;
       height: 145px;
 
@@ -89,34 +140,42 @@
       margin-bottom: 22px;
     }
 
+
     /* =========================
        ช่องกรอก
     ========================= */
 
     .input-box {
+
       width: 100%;
+
       height: 55px;
 
       padding: 5px;
+
       margin-bottom: 15px;
 
       background:
+
         linear-gradient(
           90deg,
-          rgba(255, 190, 220, 0.55),
-          rgba(220, 230, 255, 0.65)
+          rgba(255,190,220,0.55),
+          rgba(220,230,255,0.65)
         );
 
       border:
         2px solid
-        rgba(255, 255, 255, 0.8);
+        rgba(255,255,255,0.8);
 
       display: flex;
+
       align-items: center;
     }
 
+
     input[type="text"],
     input[type="password"] {
+
       width: 100%;
       height: 100%;
 
@@ -124,7 +183,7 @@
       outline: none;
 
       background:
-        rgba(245, 250, 235, 0.9);
+        rgba(245,250,235,0.9);
 
       color: #111;
 
@@ -138,65 +197,91 @@
         sans-serif;
     }
 
+
     input::placeholder {
+
       color: #222;
+
       opacity: 1;
     }
+
+
+    input:focus {
+
+      background:
+        rgba(255,255,255,0.95);
+    }
+
 
     /* =========================
        ปุ่ม Login
     ========================= */
 
     .login-button {
+
       width: 100%;
+
       height: 55px;
 
       padding: 5px;
+
       margin-bottom: 15px;
 
       border:
         2px solid
-        rgba(255, 255, 255, 0.8);
+        rgba(255,255,255,0.8);
 
       background:
+
         linear-gradient(
           90deg,
-          rgba(255, 190, 220, 0.55),
-          rgba(220, 230, 255, 0.65)
+          rgba(255,190,220,0.55),
+          rgba(220,230,255,0.65)
         );
 
       cursor: pointer;
     }
 
+
     .login-button span {
+
       width: 100%;
       height: 100%;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       background:
-        rgba(245, 250, 235, 0.9);
+        rgba(245,250,235,0.9);
 
       color: #111;
 
       font-size: 18px;
     }
 
+
     .login-button:active {
-      transform: scale(0.98);
+
+      transform:
+        scale(0.98);
     }
+
 
     /* =========================
        จำรหัส
     ========================= */
 
     .remember {
+
       width: 100%;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       gap: 10px;
@@ -210,18 +295,21 @@
       margin-bottom: 25px;
     }
 
+
     .remember input {
+
       appearance: none;
 
       width: 26px;
       height: 26px;
 
-      flex: 0 0 26px;
+      flex:
+        0 0 26px;
 
       margin: 0;
 
       background:
-        rgba(255, 255, 255, 0.45);
+        rgba(255,255,255,0.45);
 
       border:
         2px solid
@@ -230,8 +318,11 @@
       cursor: pointer;
     }
 
+
     .remember input:checked {
+
       background:
+
         linear-gradient(
           135deg,
           #ffd0e7,
@@ -241,7 +332,9 @@
       position: relative;
     }
 
+
     .remember input:checked::after {
+
       content: "✓";
 
       position: absolute;
@@ -250,36 +343,47 @@
       top: 50%;
 
       transform:
-        translate(-50%, -50%);
+        translate(-50%,-50%);
 
       font-size: 19px;
 
       color: #555;
     }
 
+
     /* =========================
-       QR CODE
+       QR SECTION
+       ซ่อนไว้ก่อน Login
     ========================= */
 
     .qr-section {
+
       width: 100%;
 
-      display: flex;
+      display: none;
+
       flex-direction: column;
+
       align-items: center;
 
       margin-top: 5px;
     }
 
+
     .qr-title {
+
       font-size: 22px;
 
       margin-bottom: 10px;
 
       color: #111;
+
+      font-weight: bold;
     }
 
+
     .wifi-qr {
+
       width: 210px;
       height: 210px;
 
@@ -295,10 +399,12 @@
 
       box-shadow:
         0 5px 18px
-        rgba(0, 0, 0, 0.08);
+        rgba(0,0,0,0.08);
     }
 
+
     .qr-text {
+
       margin-top: 10px;
 
       font-size: 15px;
@@ -308,11 +414,13 @@
       color: #333;
     }
 
+
     /* =========================
        Login สำเร็จ
     ========================= */
 
     .success {
+
       display: none;
 
       width: 100%;
@@ -328,14 +436,16 @@
       color: #111;
 
       background:
-        rgba(255, 255, 255, 0.55);
+        rgba(255,255,255,0.55);
 
       border:
         2px solid
-        rgba(255, 255, 255, 0.8);
+        rgba(255,255,255,0.8);
     }
 
+
     .success small {
+
       display: block;
 
       margin-top: 8px;
@@ -343,11 +453,13 @@
       font-size: 15px;
     }
 
+
     /* =========================
-       Logout
+       ปุ่มออกจากระบบ
     ========================= */
 
     .logout-button {
+
       display: none;
 
       width: 100%;
@@ -359,79 +471,108 @@
       border: none;
 
       background:
-        rgba(255, 255, 255, 0.7);
+        rgba(255,255,255,0.7);
 
       font-size: 17px;
 
       cursor: pointer;
     }
 
+
     .logout-button:active {
-      transform: scale(0.98);
+
+      transform:
+        scale(0.98);
     }
 
+
     /* =========================
-       จอเล็ก
+       มือถือจอเล็ก
     ========================= */
 
     @media (max-width: 360px) {
 
       .container {
-        padding: 22px 15px 25px;
+
+        padding:
+          22px
+          15px
+          25px;
       }
 
+
       .logo {
+
         width: 120px;
         height: 120px;
 
         margin-bottom: 18px;
       }
 
+
       .input-box,
       .login-button {
+
         height: 50px;
 
         margin-bottom: 13px;
       }
 
+
       input[type="text"],
       input[type="password"],
       .login-button span {
+
         font-size: 16px;
       }
 
+
       .remember {
+
         font-size: 16px;
 
         margin-bottom: 20px;
       }
 
+
       .remember input {
+
         width: 24px;
         height: 24px;
 
         flex-basis: 24px;
       }
 
+
       .qr-title {
+
         font-size: 20px;
       }
 
+
       .wifi-qr {
+
         width: 180px;
         height: 180px;
       }
 
+
       .qr-text {
+
         font-size: 14px;
       }
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <main class="container">
+
 
     <!-- =========================
          LOGO
@@ -445,7 +586,7 @@
 
 
     <!-- =========================
-         ชื่อผู้ใช้
+         USERNAME
     ========================== -->
 
     <div class="input-box">
@@ -461,7 +602,7 @@
 
 
     <!-- =========================
-         รหัสผ่าน
+         PASSWORD
     ========================== -->
 
     <div class="input-box">
@@ -477,7 +618,7 @@
 
 
     <!-- =========================
-         ปุ่มเข้าใช้งาน
+         LOGIN BUTTON
     ========================== -->
 
     <button
@@ -493,7 +634,7 @@
 
 
     <!-- =========================
-         จำรหัส
+         REMEMBER
     ========================== -->
 
     <label class="remember">
@@ -511,30 +652,7 @@
 
 
     <!-- =========================
-         QR Wi-Fi
-    ========================== -->
-
-    <section class="qr-section">
-
-      <div class="qr-title">
-        IPHONE
-      </div>
-
-      <img
-        src="wifi-qr.JPG"
-        alt="QR Code Wi-Fi"
-        class="wifi-qr"
-      >
-
-      <div class="qr-text">
-        📱 สแกน QR Code เพื่อเชื่อมต่อ Wi-Fi
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         Login สำเร็จ
+         SUCCESS
     ========================== -->
 
     <div
@@ -552,7 +670,36 @@
 
 
     <!-- =========================
-         ออกจากระบบ
+         QR CODE
+         จะปรากฏหลัง Login เท่านั้น
+    ========================== -->
+
+    <section
+      class="qr-section"
+      id="qrSection"
+    >
+
+      <div class="qr-title">
+        IPHONE
+      </div>
+
+
+      <img
+        src="wifi-qr.JPG"
+        alt="QR Code Wi-Fi"
+        class="wifi-qr"
+      >
+
+
+      <div class="qr-text">
+        📱 สแกน QR Code เพื่อเชื่อมต่อ Wi-Fi
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         LOGOUT
     ========================== -->
 
     <button
@@ -562,6 +709,7 @@
     >
       ออกจากระบบ
     </button>
+
 
   </main>
 
@@ -635,7 +783,7 @@
 
 
     /* =================================
-       Login
+       LOGIN
     ================================= */
 
     function login() {
@@ -659,7 +807,7 @@
 
 
       /* ===============================
-         ไม่ใส่ชื่อผู้ใช้
+         ไม่ใส่ Username
       ================================ */
 
       if (!username) {
@@ -677,7 +825,7 @@
 
 
       /* ===============================
-         ไม่ใส่รหัสผ่าน
+         ไม่ใส่ Password
       ================================ */
 
       if (!password) {
@@ -695,7 +843,7 @@
 
 
       /* ===============================
-         ตรวจบัญชี
+         ตรวจสอบบัญชี
       ================================ */
 
       const account =
@@ -703,8 +851,11 @@
           function (item) {
 
             return (
+
               item.username === username &&
+
               item.password === password
+
             );
 
           }
@@ -716,6 +867,9 @@
       ================================ */
 
       if (account) {
+
+
+        /* จำรหัส */
 
         if (remember) {
 
@@ -729,7 +883,9 @@
             password
           );
 
-        } else {
+        }
+
+        else {
 
           localStorage.removeItem(
             "wifi_username"
@@ -758,11 +914,15 @@
           );
 
 
+        /* ซ่อนปุ่ม Login */
+
         document.querySelector(
           ".login-button"
         ).style.display =
           "none";
 
+
+        /* ซ่อนจำรหัส */
 
         document.querySelector(
           ".remember"
@@ -770,29 +930,36 @@
           "none";
 
 
-        document.querySelector(
-          ".qr-section"
-        ).style.display =
-          "none";
-
-
-        /* ข้อความต้อนรับ */
+        /* =============================
+           แสดงข้อความสำเร็จ
+        ============================= */
 
         document.getElementById(
           "welcomeText"
         ).textContent =
+
           "ยินดีต้อนรับ " +
           account.username +
           " เข้าสู่ Wi-Fi";
 
-
-        /* แสดงสำเร็จ */
 
         document.getElementById(
           "success"
         ).style.display =
           "block";
 
+
+        /* =============================
+           ⭐ แสดง QR หลัง Login
+        ============================= */
+
+        document.getElementById(
+          "qrSection"
+        ).style.display =
+          "flex";
+
+
+        /* แสดง Logout */
 
         document.getElementById(
           "logoutButton"
@@ -818,10 +985,13 @@
 
 
     /* =================================
-       Logout
+       LOGOUT
     ================================= */
 
     function logout() {
+
+
+      /* ลบข้อมูลที่จำ */
 
       localStorage.removeItem(
         "wifi_username"
@@ -831,6 +1001,8 @@
         "wifi_password"
       );
 
+
+      /* แสดงช่อง Login */
 
       document
         .querySelectorAll(
@@ -846,11 +1018,15 @@
         );
 
 
+      /* แสดงปุ่ม Login */
+
       document.querySelector(
         ".login-button"
       ).style.display =
         "block";
 
+
+      /* แสดงจำรหัส */
 
       document.querySelector(
         ".remember"
@@ -858,11 +1034,17 @@
         "flex";
 
 
-      document.querySelector(
-        ".qr-section"
-      ).style.display =
-        "flex";
+      /* =============================
+         ⭐ ซ่อน QR อีกครั้ง
+      ============================= */
 
+      document.getElementById(
+        "qrSection"
+      ).style.display =
+        "none";
+
+
+      /* ซ่อน Success */
 
       document.getElementById(
         "success"
@@ -870,11 +1052,15 @@
         "none";
 
 
+      /* ซ่อน Logout */
+
       document.getElementById(
         "logoutButton"
       ).style.display =
         "none";
 
+
+      /* ล้างช่อง */
 
       document.getElementById(
         "username"
@@ -897,7 +1083,7 @@
 
 
     /* =================================
-       Offline Mode
+       OFFLINE MODE
     ================================= */
 
     if (
@@ -910,6 +1096,7 @@
 
           navigator.serviceWorker
             .register("./sw.js")
+
             .then(
               function () {
 
@@ -919,6 +1106,7 @@
 
               }
             )
+
             .catch(
               function (error) {
 
@@ -938,4 +1126,5 @@
   </script>
 
 </body>
+
 </html>
