@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="theme-color" content="#f9e9f7">
+
+  <link rel="manifest" href="./manifest.json">
+
   <title>เข้าสู่ระบบ Wi-Fi</title>
 
   <style>
@@ -30,22 +34,22 @@
       background:
         radial-gradient(
           circle at 10% 10%,
-          rgba(255, 255, 150, 0.35),
+          rgba(255,255,150,0.35),
           transparent 30%
         ),
         radial-gradient(
           circle at 90% 10%,
-          rgba(180, 240, 255, 0.35),
+          rgba(180,240,255,0.35),
           transparent 30%
         ),
         radial-gradient(
           circle at 10% 90%,
-          rgba(255, 220, 150, 0.3),
+          rgba(255,220,150,0.30),
           transparent 32%
         ),
         radial-gradient(
           circle at 90% 90%,
-          rgba(255, 180, 220, 0.3),
+          rgba(255,180,220,0.30),
           transparent 32%
         ),
         linear-gradient(
@@ -58,31 +62,19 @@
       overflow-x: hidden;
     }
 
-
-    /* =========================
-       กล่องหลัก
-    ========================= */
-
     .container {
       width: 100%;
       max-width: 430px;
-
       min-height: 100vh;
 
-      padding:
-        35px
-        20px
-        30px;
+      padding: 35px 20px 30px;
 
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-
-    /* =========================
-       LOGO
-    ========================= */
+    /* LOGO */
 
     .logo {
       width: 150px;
@@ -97,47 +89,37 @@
       margin-bottom: 25px;
     }
 
-
-    /* =========================
-       ช่องกรอก
-    ========================= */
+    /* ช่องกรอก */
 
     .input-box {
       width: 100%;
-
       height: 55px;
 
       padding: 5px;
-
       margin-bottom: 18px;
 
       background:
         linear-gradient(
           90deg,
-          rgba(255, 190, 220, 0.55),
-          rgba(220, 230, 255, 0.65)
+          rgba(255,190,220,0.55),
+          rgba(220,230,255,0.65)
         );
 
-      border:
-        2px solid
-        rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(255,255,255,0.8);
 
       display: flex;
       align-items: center;
     }
 
-
     input[type="text"],
     input[type="password"] {
-
       width: 100%;
       height: 100%;
 
       border: none;
       outline: none;
 
-      background:
-        rgba(245, 250, 235, 0.9);
+      background: rgba(245,250,235,0.9);
 
       color: #111;
 
@@ -151,84 +133,61 @@
         sans-serif;
     }
 
-
     input::placeholder {
       color: #222;
       opacity: 1;
     }
 
-
     input:focus {
-      background:
-        rgba(255, 255, 255, 0.95);
+      background: rgba(255,255,255,0.95);
     }
 
-
-    /* =========================
-       ปุ่ม Login
-    ========================= */
+    /* ปุ่ม */
 
     .login-button {
-
       width: 100%;
       height: 55px;
 
       padding: 5px;
-
       margin-bottom: 18px;
 
-      border:
-        2px solid
-        rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(255,255,255,0.8);
 
       background:
         linear-gradient(
           90deg,
-          rgba(255, 190, 220, 0.55),
-          rgba(220, 230, 255, 0.65)
+          rgba(255,190,220,0.55),
+          rgba(220,230,255,0.65)
         );
 
       cursor: pointer;
-
-      -webkit-tap-highlight-color:
-        transparent;
     }
 
-
     .login-button span {
-
       width: 100%;
       height: 100%;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
-      background:
-        rgba(245, 250, 235, 0.9);
+      background: rgba(245,250,235,0.9);
 
       color: #111;
 
       font-size: 18px;
     }
 
-
     .login-button:active {
       transform: scale(0.98);
     }
 
-
-    /* =========================
-       จดจำรหัส
-    ========================= */
+    /* จำรหัส */
 
     .remember {
-
       width: 100%;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -241,32 +200,24 @@
       cursor: pointer;
     }
 
-
     .remember input {
-
       appearance: none;
 
       width: 28px;
       height: 28px;
 
-      flex:
-        0 0 28px;
+      flex: 0 0 28px;
 
       margin: 0;
 
-      background:
-        rgba(255, 255, 255, 0.45);
+      background: rgba(255,255,255,0.45);
 
-      border:
-        2px solid
-        #d9e9ff;
+      border: 2px solid #d9e9ff;
 
       cursor: pointer;
     }
 
-
     .remember input:checked {
-
       background:
         linear-gradient(
           135deg,
@@ -277,9 +228,7 @@
       position: relative;
     }
 
-
     .remember input:checked::after {
-
       content: "✓";
 
       position: absolute;
@@ -295,13 +244,9 @@
       color: #555;
     }
 
-
-    /* =========================
-       Login สำเร็จ
-    ========================= */
+    /* สำเร็จ */
 
     .success {
-
       display: none;
 
       width: 100%;
@@ -317,16 +262,14 @@
       color: #111;
 
       background:
-        rgba(255, 255, 255, 0.55);
+        rgba(255,255,255,0.55);
 
       border:
         2px solid
-        rgba(255, 255, 255, 0.8);
+        rgba(255,255,255,0.8);
     }
 
-
     .success small {
-
       display: block;
 
       margin-top: 10px;
@@ -334,167 +277,140 @@
       font-size: 16px;
     }
 
+    /* ปุ่มออกจากระบบ */
 
-    /* =========================
-       หน้าจอเล็กมาก
-    ========================= */
+    .logout-button {
+      display: none;
+
+      width: 100%;
+
+      height: 50px;
+
+      margin-top: 15px;
+
+      border: none;
+
+      background: rgba(255,255,255,0.7);
+
+      font-size: 17px;
+
+      cursor: pointer;
+    }
+
+    .logout-button:active {
+      transform: scale(0.98);
+    }
+
+    /* จอเล็ก */
 
     @media (max-width: 360px) {
 
       .container {
-
-        padding:
-          25px
-          15px
-          25px;
+        padding: 25px 15px 25px;
       }
 
-
       .logo {
-
         width: 125px;
         height: 125px;
 
         margin-bottom: 20px;
       }
 
-
       .input-box,
       .login-button {
-
         height: 50px;
 
         margin-bottom: 15px;
       }
 
-
       input[type="text"],
       input[type="password"],
       .login-button span {
-
         font-size: 16px;
       }
-
 
       .remember {
-
         font-size: 16px;
       }
 
-
       .remember input {
-
         width: 25px;
         height: 25px;
-
         flex-basis: 25px;
       }
     }
-
   </style>
 </head>
 
-
 <body>
-
 
   <main class="container">
 
-
-    <!-- =========================
-         LOGO
-    ========================== -->
-
+    <!-- LOGO -->
     <img
       src="logo.PNG"
       alt="Wi-Fi Logo"
       class="logo"
     >
 
-
-    <!-- =========================
-         ชื่อผู้ใช้
-    ========================== -->
-
+    <!-- ชื่อผู้ใช้ -->
     <div class="input-box">
-
       <input
         id="username"
         type="text"
         placeholder="ชื่อผู้ใช้"
         autocomplete="username"
       >
-
     </div>
 
-
-    <!-- =========================
-         รหัสผ่าน
-    ========================== -->
-
+    <!-- รหัสผ่าน -->
     <div class="input-box">
-
       <input
         id="password"
         type="password"
         placeholder="รหัสผ่าน"
         autocomplete="current-password"
       >
-
     </div>
 
-
-    <!-- =========================
-         ปุ่มเข้าใช้งาน
-    ========================== -->
-
+    <!-- ปุ่ม -->
     <button
       class="login-button"
       onclick="login()"
     >
-
-      <span>
-        เข้าใช้งาน
-      </span>
-
+      <span>เข้าใช้งาน</span>
     </button>
 
-
-    <!-- =========================
-         จดจำรหัส
-    ========================== -->
-
+    <!-- จำรหัส -->
     <label class="remember">
-
       <input
         type="checkbox"
         id="remember"
       >
 
-      <span>
-        จดจำรหัส
-      </span>
-
+      <span>จดจำรหัส</span>
     </label>
 
-
-    <!-- =========================
-         สำเร็จ
-    ========================== -->
-
+    <!-- สำเร็จ -->
     <div
       class="success"
       id="success"
     >
-
       ✅ เข้าสู่ระบบสำเร็จ
 
-      <small>
+      <small id="welcomeText">
         ยินดีต้อนรับเข้าสู่ Wi-Fi
       </small>
-
     </div>
 
+    <!-- ออกจากระบบ -->
+    <button
+      class="logout-button"
+      id="logoutButton"
+      onclick="logout()"
+    >
+      ออกจากระบบ
+    </button>
 
   </main>
 
@@ -502,16 +418,24 @@
   <script>
 
     /* =================================
-       Username และ Password
+       บัญชีผู้ใช้
     ================================= */
 
-    const CORRECT_USERNAME = "Admin";
+    const ACCOUNTS = [
+      {
+        username: "Admin",
+        password: "09871"
+      },
 
-    const CORRECT_PASSWORD = "09871";
+      {
+        username: "Develop",
+        password: "23451"
+      }
+    ];
 
 
     /* =================================
-       โหลดข้อมูลที่จดจำ
+       โหลดข้อมูลที่จำไว้
     ================================= */
 
     window.addEventListener(
@@ -529,25 +453,19 @@
           );
 
 
-        if (
-          savedUser &&
-          savedPass
-        ) {
+        if (savedUser && savedPass) {
 
           document.getElementById(
             "username"
           ).value = savedUser;
 
-
           document.getElementById(
             "password"
           ).value = savedPass;
 
-
           document.getElementById(
             "remember"
           ).checked = true;
-
         }
 
       }
@@ -565,12 +483,10 @@
           "username"
         ).value.trim();
 
-
       const password =
         document.getElementById(
           "password"
         ).value;
-
 
       const remember =
         document.getElementById(
@@ -578,9 +494,7 @@
         ).checked;
 
 
-      /* -------------------------------
-         ไม่ใส่ Username
-      -------------------------------- */
+      /* ไม่ใส่ชื่อผู้ใช้ */
 
       if (!username) {
 
@@ -596,9 +510,7 @@
       }
 
 
-      /* -------------------------------
-         ไม่ใส่ Password
-      -------------------------------- */
+      /* ไม่ใส่รหัสผ่าน */
 
       if (!password) {
 
@@ -614,19 +526,24 @@
       }
 
 
-      /* -------------------------------
-         ตรวจข้อมูล
-      -------------------------------- */
+      /* ตรวจบัญชี */
 
-      if (
-        username === CORRECT_USERNAME &&
-        password === CORRECT_PASSWORD
-      ) {
+      const account =
+        ACCOUNTS.find(
+          function (item) {
+
+            return (
+              item.username === username &&
+              item.password === password
+            );
+
+          }
+        );
 
 
-        /* =============================
-           จดจำรหัส
-        ============================= */
+      /* ข้อมูลถูกต้อง */
+
+      if (account) {
 
         if (remember) {
 
@@ -649,23 +566,17 @@
           localStorage.removeItem(
             "wifi_password"
           );
-
         }
 
 
-        /* =============================
-           ซ่อนหน้า Login
-        ============================= */
+        /* ซ่อน Login */
 
         document
-          .querySelectorAll(
-            ".input-box"
-          )
+          .querySelectorAll(".input-box")
           .forEach(
             function (box) {
 
-              box.style.display =
-                "none";
+              box.style.display = "none";
 
             }
           );
@@ -673,32 +584,37 @@
 
         document.querySelector(
           ".login-button"
-        ).style.display =
-          "none";
+        ).style.display = "none";
 
 
         document.querySelector(
           ".remember"
-        ).style.display =
-          "none";
+        ).style.display = "none";
 
 
-        /* =============================
-           แสดงสำเร็จ
-        ============================= */
+        /* ข้อความต้อนรับ */
+
+        document.getElementById(
+          "welcomeText"
+        ).textContent =
+          "ยินดีต้อนรับ " +
+          account.username +
+          " เข้าสู่ Wi-Fi";
+
+
+        /* แสดงสำเร็จ */
 
         document.getElementById(
           "success"
-        ).style.display =
-          "block";
+        ).style.display = "block";
+
+
+        document.getElementById(
+          "logoutButton"
+        ).style.display = "block";
 
 
       } else {
-
-
-        /* =============================
-           รหัสผิด
-        ============================= */
 
         alert(
           "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
@@ -708,8 +624,108 @@
 
     }
 
-  </script>
 
+    /* =================================
+       Logout
+    ================================= */
+
+    function logout() {
+
+      localStorage.removeItem(
+        "wifi_username"
+      );
+
+      localStorage.removeItem(
+        "wifi_password"
+      );
+
+
+      document
+        .querySelectorAll(".input-box")
+        .forEach(
+          function (box) {
+
+            box.style.display = "flex";
+
+          }
+        );
+
+
+      document.querySelector(
+        ".login-button"
+      ).style.display = "block";
+
+
+      document.querySelector(
+        ".remember"
+      ).style.display = "flex";
+
+
+      document.getElementById(
+        "success"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "logoutButton"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "username"
+      ).value = "";
+
+
+      document.getElementById(
+        "password"
+      ).value = "";
+
+
+      document.getElementById(
+        "remember"
+      ).checked = false;
+
+    }
+
+
+    /* =================================
+       Offline Mode
+    ================================= */
+
+    if ("serviceWorker" in navigator) {
+
+      window.addEventListener(
+        "load",
+        function () {
+
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then(
+              function () {
+
+                console.log(
+                  "Offline Mode พร้อมใช้งาน"
+                );
+
+              }
+            )
+            .catch(
+              function (error) {
+
+                console.log(
+                  "Offline Mode Error:",
+                  error
+                );
+
+              }
+            );
+
+        }
+      );
+
+    }
+
+  </script>
 
 </body>
 </html>
